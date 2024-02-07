@@ -1,4 +1,4 @@
-export const APIURL = "http://localhost:5000/api";
+export const APIURL = "https://link-shortner-backend.onrender.com/api";
 export const NetworkConfiguration = {
     LOGIN: "/auth/login",
     SIGNUP: "/auth/signup",

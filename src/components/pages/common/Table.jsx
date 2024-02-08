@@ -34,7 +34,7 @@ Modal.setAppElement('#root');
 
 
 
-export default function BasicTable({ data }) {
+export default function BasicTable({ data, fetchData }) {
 
     const [editModal, setIsModal] = useState(false);
     const [link, setLink] = useState("");
@@ -55,7 +55,7 @@ export default function BasicTable({ data }) {
 
             }
             else {
-
+                fetchData()
                 setIsModal(false)
                 navigate("/")
             }
@@ -79,7 +79,7 @@ export default function BasicTable({ data }) {
 
             }
             else {
-
+                fetchData()
                 navigate("/")
             }
         } catch (error) {

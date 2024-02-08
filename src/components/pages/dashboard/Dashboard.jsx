@@ -44,7 +44,16 @@ const Dashboard = () => {
         setUrl(e.target.value);
         setError("");
     };
+    const fetchUrl = async () => {
+        const urls = await LinkService.get(JSON.stringify({ isActive: true }))
+        if (urls.success) {
+            dispatch(setLinks(urls.data))
+        }
+        else {
+            alert(urls.message)
+        }
 
+    }
 
 
     const handleSubmit = async () => {
@@ -61,9 +70,10 @@ const Dashboard = () => {
 
             }
             else {
-
+                fetchUrl()
                 setIsOpen(false)
                 navigate("/")
+
             }
         }
         catch (error) {
@@ -84,16 +94,7 @@ const Dashboard = () => {
 
 
     useEffect(() => {
-        const fetchUrl = async () => {
-            const urls = await LinkService.get(JSON.stringify({ isActive: true }))
-            if (urls.success) {
-                dispatch(setLinks(urls.data))
-            }
-            else {
-                alert(urls.message)
-            }
 
-        }
         fetchUrl()
     }, [])
 
@@ -135,7 +136,7 @@ const Dashboard = () => {
 
             </Modal>
             <div className="tableContainer">
-                <CommonTable data={links} />
+                <CommonTable data={links} fetchData={fetchUrl} />
             </div>
 
 

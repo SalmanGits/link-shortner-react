@@ -73,6 +73,7 @@ const Dashboard = () => {
                 fetchUrl()
                 setIsOpen(false)
                 navigate("/")
+                setUrl("")
 
             }
         }
